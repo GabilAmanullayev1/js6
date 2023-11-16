@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 20px;
+        gap: 20px;
+
+    }
+
+    .MyDiv {
+        border: 3px dashed black;
+        max-width: 300px;
+        padding: 20px 50px;
+        text-align: center;
+        margin: 0 auto;
+        font-size: 20px;
+    }
+
+    .font-body {
+        padding-top: 20px;
+    }
+
+    button {
+        width: 100px;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="MyDiv" id="myDiv">
+        Example Text
+    </div>
+    <div class="font-body">
+        <button class="btn1" onclick="changeFontSize(5)">+</button>
+        <button class="btn2" onclick="changeFontSize(-5)">-</button>
+    </div>
+    <div class="font-radius">
+        <button class="btn1" onclick="changeBorderRadius(5)">+</button>
+        <button class="btn2" onclick="changeBorderRadius(-5)">-</button>
+    </div>
+    <div class="font-height">
+        <button class="btn1" onclick="changeHeight(5)">+</button>
+        <button class="btn2" onclick="changeHeight(-5)">-</button>
+    </div>
+    <div class="font-width">
+        <button class="btn1" onclick="changeWidth(5)">+</button>
+        <button class="btn2" onclick="changeWidth(-5)">-</button>
+    </div>
+    <div  class="font-color">
+        <input type="color" name="color1" id="firstcolor" onchange="changeBackgroundColor(this.value)">
+    </div>
+    <div  class="font-text">
+        <input type="color" name="color1" id="firstcolor" onchange="changeColor(this.value)">
+    </div>
+
+
+    <script>
+        function changeFontSize(amount) {
+            let myDiv = document.getElementById("myDiv");
+            let currentFontSize = window.getComputedStyle(myDiv).fontSize;
+            let newFontSize = parseInt(currentFontSize) + amount + "px";
+            myDiv.style.fontSize = newFontSize;
+        }
+        function changeBorderRadius(amount) {
+            let myDiv = document.getElementById("myDiv");
+            let currentBorderRadius = window.getComputedStyle(myDiv).borderRadius;
+            let newBorderRadius = parseInt(currentBorderRadius) + amount + "px";
+            myDiv.style.borderRadius = newBorderRadius;
+        }
+        function changeHeight(amount) {
+            let myDiv = document.getElementById("myDiv");
+            let currentHeight = window.getComputedStyle(myDiv).height;
+            let newHeight = parseInt(currentHeight) + amount + "px";
+            myDiv.style.height = newHeight;
+        }
+        function changeWidth(amount) {
+            let myDiv = document.getElementById("myDiv");
+            let currentWidth = window.getComputedStyle(myDiv).width;
+            let newWidth = parseInt(currentWidth) + amount + "px";
+            myDiv.style.width = newWidth;
+        }
+        function changeBackgroundColor(color) {
+            let myDiv = document.getElementById("myDiv");
+            myDiv.style.backgroundColor = color;
+            
+        }
+        function changeColor(color) {
+            let myDiv = document.getElementById("myDiv");
+            myDiv.style.color = color;
+            
+        }
+
+
+    </script>
+
+</body>
+
+</html>
