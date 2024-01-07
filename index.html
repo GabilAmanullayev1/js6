@@ -17,19 +17,35 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         padding-top: 20px;
         gap: 20px;
-
+        border: 3px solid black;
+        padding: 20px;
+        border-radius: 30px;
+        width: 50%;
+        background-color: aliceblue;
     }
 
     .MyDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: 3px dashed black;
-        max-width: 300px;
-        padding: 20px 50px;
+        width: 200px;
+        height: 100px;
+        padding: 10px;
         text-align: center;
-        margin: 0 auto;
-        font-size: 20px;
+        font-size: 18px;
+        overflow: hidden;
+        max-width: 250px;
+        max-height: 350px;
     }
 
     .font-body {
@@ -38,37 +54,75 @@
 
     button {
         width: 100px;
+        padding: 5px 10px;
+        border-radius: 50px;
         background-color: black;
         color: white;
         cursor: pointer;
     }
+
+    .color-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .font-text {
+        input {
+            width: 100px;
+            cursor: pointer;
+        }
+    }
+
+    .font-color {
+
+        input {
+            width: 100px;
+            cursor: pointer;
+        }
+    }
 </style>
 
 <body>
-    <div class="MyDiv" id="myDiv">
-        Example Text
-    </div>
-    <div class="font-body">
-        <button class="btn1" onclick="changeFontSize(5)">+</button>
-        <button class="btn2" onclick="changeFontSize(-5)">-</button>
-    </div>
-    <div class="font-radius">
-        <button class="btn1" onclick="changeBorderRadius(5)">+</button>
-        <button class="btn2" onclick="changeBorderRadius(-5)">-</button>
-    </div>
-    <div class="font-height">
-        <button class="btn1" onclick="changeHeight(5)">+</button>
-        <button class="btn2" onclick="changeHeight(-5)">-</button>
-    </div>
-    <div class="font-width">
-        <button class="btn1" onclick="changeWidth(5)">+</button>
-        <button class="btn2" onclick="changeWidth(-5)">-</button>
-    </div>
-    <div  class="font-color">
-        <input type="color" name="color1" id="firstcolor" onchange="changeBackgroundColor(this.value)">
-    </div>
-    <div  class="font-text">
-        <input type="color" name="color1" id="firstcolor" onchange="changeColor(this.value)">
+    <div class="container">
+        <div class="MyDiv" id="myDiv">
+            Example Text
+        </div>
+        <div class="font-body">
+            <label for="" style="display: block;text-align: center;margin:0 0 8px;font-size: 16px;">Font Size</label>
+            <button class="btn1" onclick="changeFontSize(5)">+</button>
+            <button class="btn2" onclick="changeFontSize(-5)">-</button>
+        </div>
+        <div class="font-radius">
+            <label for="" style="display: block;text-align: center;margin:0 0 8px;font-size: 16px;">Border
+                Radius</label>
+            <button class="btn1" onclick="changeBorderRadius(5)">+</button>
+            <button class="btn2" onclick="changeBorderRadius(-5)">-</button>
+        </div>
+        <div class="font-height">
+            <label for="" style="display: block;text-align: center;margin:0 0 8px;font-size: 16px;">Height</label>
+            <button class="btn1" onclick="changeHeight(5)">+</button>
+            <button class="btn2" onclick="changeHeight(-5)">-</button>
+        </div>
+        <div class="font-width">
+            <label for="" style="display: block;text-align: center;margin:0 0 8px;font-size: 16px;">Width</label>
+            <button class="btn1" onclick="changeWidth(5)">+</button>
+            <button class="btn2" onclick="changeWidth(-5)">-</button>
+        </div>
+        <div class="color-container">
+            <div class="font-color">
+                <label for="firstcolor" style="display: block; margin: 0 0 8px; font-size: 16px;">Background
+                    Color</label>
+                <input type="color" name="color1" id="firstcolor" onchange="changeBackgroundColor(this.value)">
+            </div>
+
+            <div class="font-text">
+                <label for="textcolor" style="display: block;  margin: 0 0 8px; font-size: 16px;">Text
+                    Color</label>
+                <input type="color" name="color2" id="textcolor" onchange="changeColor(this.value)">
+            </div>
+        </div>
+
     </div>
 
 
@@ -78,6 +132,7 @@
             let currentFontSize = window.getComputedStyle(myDiv).fontSize;
             let newFontSize = parseInt(currentFontSize) + amount + "px";
             myDiv.style.fontSize = newFontSize;
+            console.log(currentFontSize)
         }
         function changeBorderRadius(amount) {
             let myDiv = document.getElementById("myDiv");
@@ -100,12 +155,12 @@
         function changeBackgroundColor(color) {
             let myDiv = document.getElementById("myDiv");
             myDiv.style.backgroundColor = color;
-            
+
         }
         function changeColor(color) {
             let myDiv = document.getElementById("myDiv");
             myDiv.style.color = color;
-            
+
         }
 
 
